@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/common/ThemeProvider';
+import { GoogleAuthProvider } from '@/components/common/GoogleAuthProvider';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Toaster } from 'sonner';
@@ -19,10 +20,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <div className="flex-1">{children}</div>
-          <Footer />
-          <Toaster richColors position="top-right" />
+          <GoogleAuthProvider>
+            <Navbar />
+            <div className="flex-1">{children}</div>
+            <Footer />
+            <Toaster richColors position="top-right" />
+          </GoogleAuthProvider>
         </ThemeProvider>
       </body>
     </html>
