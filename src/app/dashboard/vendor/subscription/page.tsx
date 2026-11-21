@@ -188,15 +188,20 @@ export default function VendorSubscriptionPage() {
                         <span>Active Premium Membership</span>
                       </div>
                     ) : (
-                      <button
-                        onClick={handleUpgrade}
-                        disabled={checkingOut}
-                        className="w-full py-3.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-500 to-pizza-600 hover:from-amber-600 hover:to-pizza-700 text-white shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-                      >
-                        <Zap className="w-4 h-4 fill-white" />
-                        <span>{checkingOut ? 'Redirecting to Stripe...' : 'Upgrade with Stripe ($19.99)'}</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
+                      <>
+                        <button
+                          onClick={handleUpgrade}
+                          disabled={checkingOut}
+                          className="w-full py-3.5 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-500 to-pizza-600 hover:from-amber-600 hover:to-pizza-700 text-white shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                        >
+                          <Zap className="w-4 h-4 fill-white" />
+                          <span>{checkingOut ? 'Redirecting to Stripe...' : 'Upgrade with Stripe ($19.99)'}</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                        <p className="text-[11px] text-center text-stone-400 mt-2">
+                          Supports live Stripe and Stripe Sandbox test simulator
+                        </p>
+                      </>
                     )}
                   </div>
                 </div>
