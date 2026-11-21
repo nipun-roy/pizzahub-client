@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { MenuItem } from '@/types';
 import { api } from '@/lib/api';
@@ -9,7 +9,7 @@ import { FilterBar } from '@/components/menu/FilterBar';
 import { PizzaLoader } from '@/components/common/PizzaLoader';
 import { Pizza, Frown } from 'lucide-react';
 
-export default function BrowseMenuPage() {
+function MenuContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'All';
 
@@ -118,5 +118,13 @@ export default function BrowseMenuPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function BrowseMenuPage() {
+  return (
+    <Suspense fallback={<div className="py-24 flex justify-center"><PizzaLoader message="Loading menu..." size="lg" /></div>}>
+      <MenuContent />
+    </Suspense>
   );
 }
