@@ -18,9 +18,11 @@ import {
   X,
   Pizza,
   Sparkles,
+  ExternalLink,
 } from 'lucide-react';
 import { getStoredUser, clearAuthSession } from '@/lib/auth-client';
 import { UserRole } from '@/types';
+import { ThemeToggle } from '../common/ThemeToggle';
 import { toast } from 'sonner';
 
 interface NavItem {
@@ -67,6 +69,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     router.push('/');
   };
 
+  // Get active page label for breadcrumbs
+  const activeItem = currentNav.find((item) => pathname === item.href) || currentNav[0];
+
   return (
     <div className="min-h-screen bg-stone-50/60 dark:bg-stone-950 flex flex-col md:flex-row">
       {/* Mobile Top Header */}
@@ -77,15 +82,18 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </div>
           <span className="font-bold text-stone-900 dark:text-white">PizzaHub</span>
         </Link>
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
-        >
-          {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
+          >
+            {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Sidebar Component */}
+      {/* Sidebar Component (Full height from the very top) */}
       <aside
         className={`fixed md:sticky top-0 z-30 h-screen w-64 bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800 flex flex-col justify-between transition-transform duration-200 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
@@ -173,10 +181,33 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      {/* Main Content Area */}
-      <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
-        {children}
-      </main>
+      {/* Main Column */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Sleek Dashboard Topbar for Desktop */}
+        <header className="hidden md:flex h-16 border-b border-stone-200/80 dark:border-stone-800 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md px-8 items-center justify-between sticky top-0 z-20">
+          <div className="flex items-center gap-2 text-xs font-semibold text-stone-500">
+            <span className="capitalize">{role} Portal</span>
+            <span>/</span>
+            <span className="text-stone-900 dark:text-white font-bold">{activeItem?.label}</span>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-300 transition-colors"
+            >
+              <span>View Storefront</span>
+              <ExternalLink className="w-3 h-3" />
+            </Link>
+          </div>
+        </header>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

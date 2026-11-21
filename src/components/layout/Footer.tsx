@@ -1,8 +1,18 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Pizza, Mail, Phone, MapPin, Instagram, Facebook, Github } from 'lucide-react';
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Hide public storefront footer inside dashboard pages
+  if (pathname.startsWith('/dashboard')) {
+    return null;
+  }
+
   return (
     <footer className="border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 text-stone-600 dark:text-stone-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">

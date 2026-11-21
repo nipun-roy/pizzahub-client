@@ -38,6 +38,11 @@ export function Navbar() {
     return `/dashboard/${user.role}`;
   };
 
+  // Hide public storefront navbar inside dashboard pages to avoid double header/logo
+  if (pathname.startsWith('/dashboard')) {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
