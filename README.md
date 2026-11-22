@@ -5,8 +5,8 @@ PizzaHub is an authentic, multi-role pizza ordering and delivery platform built 
 ---
 
 ## 🚀 Live Site & Repositories
-- **Live Client Application**: [https://pizzahub-client.vercel.app](https://pizzahub-client.vercel.app)
-- **Live Backend Server**: [https://pizzahub-server.onrender.com](https://pizzahub-server.onrender.com)
+- **Live Client Application**: [https://pizzahub-hazel.vercel.app](https://pizzahub-hazel.vercel.app)
+- **Live Backend Server**: [https://pizzahub-server-psi.vercel.app](https://pizzahub-server-psi.vercel.app)
 - **Client GitHub Repository**: [https://github.com/nipun-roy/pizzahub-client](https://github.com/nipun-roy/pizzahub-client)
 - **Server GitHub Repository**: [https://github.com/nipun-roy/pizzahub-server](https://github.com/nipun-roy/pizzahub-server)
 
