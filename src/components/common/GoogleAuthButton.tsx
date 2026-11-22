@@ -143,29 +143,6 @@ export function GoogleAuthButton({
         )}
       </button>
 
-      {/* Instant 1-Click Pills Direct on Page for Instant Testing */}
-      <div className="flex items-center justify-center gap-1.5 text-xs text-stone-500">
-        <span className="text-[11px] text-stone-400">1-Click:</span>
-        <button
-          type="button"
-          onClick={() => handleAccountSelect('alexpaul0606a@gmail.com', 'Alex Paul', 'customer')}
-          disabled={loading}
-          className="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-pizza-100 dark:hover:bg-pizza-950/60 text-stone-700 dark:text-stone-300 hover:text-pizza-600 text-[11px] font-semibold transition-colors flex items-center gap-1.5 border border-stone-200/60 dark:border-stone-700/60"
-        >
-          <span className="w-2 h-2 rounded-full bg-pizza-600 flex-shrink-0" />
-          <span>Alex (Customer)</span>
-        </button>
-        <button
-          type="button"
-          onClick={() => handleAccountSelect('nipunroy281@gmail.com', 'Nipun Roy', role === 'vendor' ? 'vendor' : 'customer')}
-          disabled={loading}
-          className="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-amber-100 dark:hover:bg-amber-950/60 text-stone-700 dark:text-stone-300 hover:text-amber-600 text-[11px] font-semibold transition-colors flex items-center gap-1.5 border border-stone-200/60 dark:border-stone-700/60"
-        >
-          <span className="w-2 h-2 rounded-full bg-amber-600 flex-shrink-0" />
-          <span>Nipun ({role === 'vendor' ? 'Vendor' : 'User'})</span>
-        </button>
-      </div>
-
       {/* Google Account Chooser Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
@@ -247,7 +224,7 @@ export function GoogleAuthButton({
                   </div>
                 </div>
                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-600 flex-shrink-0">
-                  {role === 'vendor' ? 'Vendor' : 'User'}
+                  {role === 'vendor' ? 'Restaurant Vendor' : 'Customer'}
                 </span>
               </button>
             </div>
