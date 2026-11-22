@@ -135,13 +135,6 @@ function SignInForm() {
 
       <GoogleAuthButton returnUrl={returnUrl || undefined} />
 
-      {/* Demo Credentials Helper */}
-      <div className="p-3 bg-stone-50 dark:bg-stone-800/60 rounded-xl text-xs space-y-1 text-stone-500">
-        <p className="font-bold text-stone-700 dark:text-stone-300">Default Admin Credentials:</p>
-        <p>Email: <code className="text-pizza-600 font-mono">admin@pizzahub.com</code></p>
-        <p>Password: <code className="text-pizza-600 font-mono">Admin@123456</code></p>
-      </div>
-
       {/* Footer Redirect */}
       <p className="text-center text-xs text-stone-500">
         Don't have an account?{' '}
