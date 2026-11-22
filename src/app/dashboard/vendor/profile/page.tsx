@@ -6,6 +6,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { getStoredUser, setAuthSession, getStoredToken } from '@/lib/auth-client';
 import { api } from '@/lib/api';
 import { User, Store, Mail, Image as ImageIcon, CheckCircle2 } from 'lucide-react';
+import { UserAvatar } from '@/components/common/UserAvatar';
 import { toast } from 'sonner';
 
 export default function VendorProfilePage() {
@@ -63,13 +64,7 @@ export default function VendorProfilePage() {
           >
             {/* Business Logo Preview */}
             <div className="flex items-center gap-4">
-              {image ? (
-                <img src={image} alt={businessName || name} className="w-16 h-16 rounded-2xl object-cover border" />
-              ) : (
-                <div className="w-16 h-16 rounded-2xl bg-pizza-100 dark:bg-pizza-950 text-pizza-600 flex items-center justify-center font-bold text-2xl">
-                  {name.charAt(0).toUpperCase()}
-                </div>
-              )}
+              <UserAvatar name={businessName || name} image={image} size="xl" shape="rounded" />
               <div>
                 <p className="font-bold text-sm text-stone-900 dark:text-white">{businessName || name}</p>
                 <p className="text-xs text-stone-400 capitalize">Verified Restaurant Vendor</p>

@@ -23,6 +23,7 @@ import {
 import { getStoredUser, clearAuthSession } from '@/lib/auth-client';
 import { UserRole } from '@/types';
 import { ThemeToggle } from '../common/ThemeToggle';
+import { UserAvatar } from '../common/UserAvatar';
 import { toast } from 'sonner';
 
 interface NavItem {
@@ -117,13 +118,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
           {/* User Preview & Role Pill */}
           <div className="p-4 mx-3 my-3 bg-stone-50 dark:bg-stone-800/60 rounded-2xl border border-stone-100 dark:border-stone-800 flex items-center gap-3">
-            {user?.image ? (
-              <img src={user.image} alt={user.name} className="w-10 h-10 rounded-xl object-cover" />
-            ) : (
-              <div className="w-10 h-10 rounded-xl bg-pizza-100 dark:bg-pizza-950 text-pizza-600 flex items-center justify-center font-bold">
-                {user?.name?.charAt(0).toUpperCase() || 'U'}
-              </div>
-            )}
+            <UserAvatar name={user?.name} image={user?.image} size="md" shape="rounded" />
             <div className="overflow-hidden">
               <p className="text-sm font-bold text-stone-800 dark:text-stone-200 truncate">{user?.name}</p>
               <div className="flex items-center gap-1.5 mt-0.5">

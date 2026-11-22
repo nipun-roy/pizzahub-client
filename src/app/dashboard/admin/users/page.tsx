@@ -6,6 +6,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { api } from '@/lib/api';
 import { User } from '@/types';
 import { PizzaLoader } from '@/components/common/PizzaLoader';
+import { UserAvatar } from '@/components/common/UserAvatar';
 import { Search, ShieldAlert, ShieldCheck, User as UserIcon, Store, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -126,13 +127,7 @@ export default function AdminUsersPage() {
                         <tr key={u._id || u.id} className="hover:bg-stone-50/50 dark:hover:bg-stone-800/40 transition-colors">
                           <td className="py-4 px-6">
                             <div className="flex items-center gap-3">
-                              {u.image ? (
-                                <img src={u.image} alt={u.name} className="w-10 h-10 rounded-full object-cover" />
-                              ) : (
-                                <div className="w-10 h-10 rounded-full bg-pizza-100 dark:bg-pizza-950 text-pizza-600 flex items-center justify-center font-bold text-sm">
-                                  {u.name?.charAt(0).toUpperCase()}
-                                </div>
-                              )}
+                              <UserAvatar name={u.name} image={u.image} size="md" />
                               <div>
                                 <p className="font-bold text-stone-900 dark:text-white flex items-center gap-1.5">
                                   <span>{u.name}</span>

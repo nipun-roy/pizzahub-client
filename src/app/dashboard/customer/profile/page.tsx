@@ -6,6 +6,7 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { getStoredUser, setAuthSession, getStoredToken } from '@/lib/auth-client';
 import { api } from '@/lib/api';
 import { User, Mail, Image as ImageIcon, CheckCircle2 } from 'lucide-react';
+import { UserAvatar } from '@/components/common/UserAvatar';
 import { toast } from 'sonner';
 
 export default function CustomerProfilePage() {
@@ -65,13 +66,7 @@ export default function CustomerProfilePage() {
           >
             {/* Avatar Preview */}
             <div className="flex items-center gap-4">
-              {image ? (
-                <img src={image} alt={name} className="w-16 h-16 rounded-2xl object-cover border" />
-              ) : (
-                <div className="w-16 h-16 rounded-2xl bg-pizza-100 dark:bg-pizza-950 text-pizza-600 flex items-center justify-center font-bold text-2xl">
-                  {name.charAt(0).toUpperCase()}
-                </div>
-              )}
+              <UserAvatar name={name} image={image} size="xl" shape="rounded" />
               <div>
                 <p className="font-bold text-sm text-stone-900 dark:text-white">{name}</p>
                 <p className="text-xs text-stone-400 capitalize">{user?.role} Account</p>

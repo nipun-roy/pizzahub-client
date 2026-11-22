@@ -7,6 +7,7 @@ import { Pizza, User as UserIcon, LogOut, LayoutDashboard, Menu as MenuIcon, X, 
 import { getStoredUser, clearAuthSession } from '@/lib/auth-client';
 import { User } from '@/types';
 import { ThemeToggle } from '../common/ThemeToggle';
+import { UserAvatar } from '../common/UserAvatar';
 import { toast } from 'sonner';
 
 export function Navbar() {
@@ -102,13 +103,7 @@ export function Navbar() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center gap-2 p-1.5 rounded-full hover:ring-2 hover:ring-pizza-500/40 transition-all border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900"
               >
-                {user.image ? (
-                  <img src={user.image} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
-                ) : (
-                  <div className="w-8 h-8 rounded-full bg-pizza-100 dark:bg-pizza-950 text-pizza-600 flex items-center justify-center font-bold text-sm">
-                    {user.name.charAt(0).toUpperCase()}
-                  </div>
-                )}
+                <UserAvatar name={user.name} image={user.image} size="sm" />
                 <span className="text-sm font-semibold pr-2 text-stone-800 dark:text-stone-200 max-w-[120px] truncate">
                   {user.name}
                 </span>

@@ -48,7 +48,9 @@ export function GoogleAuthButton({
       const res = await api.post('/auth/google', {
         email: emailToUse,
         name: nameToUse,
-        image: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(nameToUse)}`,
+        image: emailToUse.toLowerCase().includes('nipun')
+          ? 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80'
+          : 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
         role: userRole,
       });
 
