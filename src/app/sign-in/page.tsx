@@ -30,9 +30,9 @@ function SignInForm() {
         toast.success(`Welcome back, ${res.data.user.name}!`);
 
         if (returnUrl) {
-          router.push(returnUrl);
+          window.location.href = returnUrl;
         } else {
-          router.push(`/dashboard/${res.data.user.role}`);
+          window.location.href = `/dashboard/${res.data.user.role}`;
         }
       }
     } catch (err: any) {

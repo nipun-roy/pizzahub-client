@@ -48,7 +48,7 @@ export default function SignUpPage() {
       if (res.data.success) {
         setAuthSession(res.data.token, res.data.user);
         toast.success('Account created successfully! Welcome to PizzaHub.');
-        router.push(`/dashboard/${res.data.user.role}`);
+        window.location.href = `/dashboard/${res.data.user.role}`;
       }
     } catch (err: any) {
       toast.error(err.response?.data?.message || 'Registration failed. Please try again.');
